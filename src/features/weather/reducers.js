@@ -33,7 +33,7 @@ export const fetchCurrentWeatherData = createAsyncThunk(
     try {
       // Geocoding API to get lat and long of both country
       const firstGeo = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${arg.firstCountry}&limit=1&appid=${apiKey}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${arg.firstCountry}&limit=1&appid=${apiKey}`
       );
       const [firstLat, firstLong] = [
         firstGeo.data[0].lat,
@@ -41,17 +41,17 @@ export const fetchCurrentWeatherData = createAsyncThunk(
       ];
 
       const secondGeo = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${arg.secondCountry}&limit=1&appid=${apiKey}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${arg.secondCountry}&limit=1&appid=${apiKey}`
       );
       const [secondLat, secondLong] = [
         secondGeo.data[0].lat,
         secondGeo.data[0].lon,
       ];
       const firstData = await axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${firstLat}&lon=${firstLong}&appid=${apiKey}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${firstLat}&lon=${firstLong}&appid=${apiKey}&units=metric`
       );
       const secondData = await axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${secondLat}&lon=${secondLong}&appid=${apiKey}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${secondLat}&lon=${secondLong}&appid=${apiKey}&units=metric`
       );
       const data = { firstData: firstData, secondData: secondData };
       return data;
@@ -68,14 +68,14 @@ export const fetchPastWeatherData = createAsyncThunk(
     try {
       // Geocoding API to get lat and long of both country
       const firstGeo = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${arg.firstCountry}&limit=1&appid=${apiKey}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${arg.firstCountry}&limit=1&appid=${apiKey}`
       );
       const [firstLat, firstLong] = [
         firstGeo.data[0].lat,
         firstGeo.data[0].lon,
       ];
       const secondGeo = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${arg.secondCountry}&limit=1&appid=${apiKey}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${arg.secondCountry}&limit=1&appid=${apiKey}`
       );
       const [secondLat, secondLong] = [
         secondGeo.data[0].lat,
@@ -84,10 +84,10 @@ export const fetchPastWeatherData = createAsyncThunk(
 
       // Fetch historial weather record of the past hour
       const firstData = await axios.get(
-        `http://history.openweathermap.org/data/2.5/history/city?lat=${firstLat}&lon=${firstLong}&appid=${apiKey}`
+        `https://history.openweathermap.org/data/2.5/history/city?lat=${firstLat}&lon=${firstLong}&appid=${apiKey}`
       );
       const secondData = await axios.get(
-        `http://history.openweathermap.org/data/2.5/history/city?lat=${secondLat}&lon=${secondLong}&appid=${apiKey}`
+        `https://history.openweathermap.org/data/2.5/history/city?lat=${secondLat}&lon=${secondLong}&appid=${apiKey}`
       );
 
       const data = { firstData: firstData.data, secondData: secondData.data };
@@ -105,14 +105,14 @@ export const fetchAirPollutionData = createAsyncThunk(
     try {
       // Geocoding API to get lat and long of both country
       const firstGeo = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${arg.firstCountry}&limit=1&appid=${apiKey}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${arg.firstCountry}&limit=1&appid=${apiKey}`
       );
       const [firstLat, firstLong] = [
         firstGeo.data[0].lat,
         firstGeo.data[0].lon,
       ];
       const secondGeo = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${arg.secondCountry}&limit=1&appid=${apiKey}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${arg.secondCountry}&limit=1&appid=${apiKey}`
       );
       const [secondLat, secondLong] = [
         secondGeo.data[0].lat,
@@ -121,10 +121,10 @@ export const fetchAirPollutionData = createAsyncThunk(
 
       // Fetch historial weather record of the past hour
       const firstData = await axios.get(
-        `http://api.openweathermap.org/data/2.5/air_pollution?lat=${firstLat}&lon=${firstLong}&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${firstLat}&lon=${firstLong}&appid=${apiKey}`
       );
       const secondData = await axios.get(
-        `http://api.openweathermap.org/data/2.5/air_pollution?lat=${secondLat}&lon=${secondLong}&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${secondLat}&lon=${secondLong}&appid=${apiKey}`
       );
 
       const data = { firstData: firstData.data, secondData: secondData.data };
